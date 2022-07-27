@@ -1,6 +1,4 @@
 'use strict';
-
-//SELECTIONS
 const modal = document.querySelector('.modal');
 const overlay = document.querySelector('.overlay');
 const btnCloseModal = document.querySelector('.btn--close-modal');
@@ -18,8 +16,6 @@ const sections = document.querySelectorAll('.section');
 const tabs = document.querySelectorAll('.operations__tab');
 const tabsContainer = document.querySelector('.operations__tab-container');
 const tabsContent = document.querySelectorAll('.operations__content');
-
-// Modal window
 const openModal = function (e) {
   e.preventDefault();
   modal.classList.remove('hidden');
@@ -43,13 +39,10 @@ document.addEventListener('keydown', function (e) {
     closeModal();
   }
 });
-
-// btn learn more SCROLLING
 btnScrollTo.addEventListener('click', function (e) {
   e.preventDefault();
   section1.scrollIntoView({ behavior: 'smooth' });
 });
-
 document.querySelector('.nav__links').addEventListener('click', function (e) {
   e.preventDefault();
   if (e.target.classList.contains('nav__link')) {
@@ -59,7 +52,6 @@ document.querySelector('.nav__links').addEventListener('click', function (e) {
 });
 tabsContainer.addEventListener('click', function (e) {
   const clicked = e.target.closest('.operations__tab');
-
   if (!clicked) return;
   tabs.forEach(t => t.classList.remove('operations__tab--active'));
   tabsContent.forEach(c => c.classList.remove('operations__content--active'));
@@ -68,7 +60,6 @@ tabsContainer.addEventListener('click', function (e) {
     .querySelector(`.operations__content--${clicked.dataset.tab}`)
     .classList.add('operations__content--active');
 });
-
 const handleHover = function (e) {
   if (e.target.classList.contains('nav__link')) {
     const link = e.target;
@@ -94,7 +85,6 @@ const headerObserver = new IntersectionObserver(stickyNav, {
   rootMargin: `-${navHeight}px`,
 });
 headerObserver.observe(header);
-
 const revealSection = function (entries, observer) {
   const [entry] = entries;
   if (!entry.isIntersecting) return;
@@ -132,7 +122,6 @@ const slider = function () {
   const dotContainer = document.querySelector('.dots');
   let curSlide = 0;
   const maxSlide = slides.length;
-
   const createDots = function () {
     slides.forEach(function (_, i) {
       dotContainer.insertAdjacentHTML(
@@ -145,7 +134,6 @@ const slider = function () {
     document
       .querySelectorAll('.dots__dot')
       .forEach(dot => dot.classList.remove('dots__dot--active'));
-
     document
       .querySelector(`.dots__dot[data-slide="${slide}"]`)
       .classList.add('dots__dot--active');
@@ -194,7 +182,6 @@ const slider = function () {
   init();
 };
 slider();
-
 document.addEventListener('DOMContentLoaded', function (e) {
   console.log('HTML parsed and DOM tree built!', e);
 });
